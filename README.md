@@ -1,149 +1,118 @@
 # ManufacturersRepo
+
 ## Overview
-Makersharks is building a search page where buyers can search for manufacturers based on their customized requirements. This API allows users to retrieve a list of manufacturers based on location, nature of business, and manufacturing processes.
+**ManufacturersRepo** is an API developed by Makersharks to enable buyers to search for manufacturers based on customized criteria such as location, nature of business, and manufacturing processes. The API also includes features for user registration, authentication, and secure account management.
 
 ## Features
-- Retrieve manufacturers based on location, nature of business, and manufacturing processes.
-- Pagination support for large result sets.
-- Input validation and sanitization.
-- Exception handling and security best practices.
-- **User Registration**: Users can register for a new account.
-- **Email Validation**: Accounts are activated using secure email validation codes.
-- **User Authentication**: Existing users can log in to their accounts securely using JWT tokens.
+- **Search Manufacturers**: Retrieve manufacturers filtered by location, nature of business, and manufacturing processes.
+- **Pagination**: Support for handling large result sets.
+- **User Registration**: Secure registration for new users.
+- **User Authentication**: JWT-based authentication for users.
+- **Email Validation**: Activation of user accounts via email validation codes.
+- **Security**: Implementation of security best practices using Spring Security and JWT.
+- **Input Validation & Sanitization**: Ensures valid and clean input data.
+- **Exception Handling**: Centralized and robust error management.
 
 ## Prerequisites
-- Java 11 or higher
-- Maven or Gradle
-- Spring Boot
+- **Java 11** or higher
+- **Maven** or **Gradle**
+- **Docker** (for running the Docker Compose file)
+- **Spring Boot**
 
 ## Getting Started
-Setup Instructions
-To set up the backend of the Book Social Network project, follow these steps:
 
-## Clone the repository:
-   git clone https://github.com/Phillips-41/ManufacturersRepo.git
-## Run the docker-compose file
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Phillips-41/ManufacturersRepo.git
+```
+### 2. Run the docker-compose file
+```bash
   docker-compose up -d
-## Navigate to the book-social-network directory:
+  ```
+### 3. Navigate to the book-social-network directory:
+```bash
   cd ManufacturersRepo
-## Install dependencies (assuming Maven is installed):
+ ``` 
+### 4. Install dependencies (assuming Maven is installed):
+```bash
   mvn clean install
-## Run the application but first replace the x.x.x with the current version from the pom.xml file
+  ```
+### 5. Run the application but first replace the x.x.x with the current version from the pom.xml file
+```bash
   java -jar target/ManufacturersRepo-x.x.x.jar
+  ```
 ### Access the API documentation using Swagger UI:
+### API Endpoints:
 
 
-## API Endpoints
-### User Registration
 ### Endpoint: /auth/register
 ### Method: POST
 ###  Description: Register a new user account.
+## API Reference
 
-Request Body
-JSON
 
-{
- "firstname" : "firstname",
-  "lastname"  : "lastname",
-  "email"     : "name@gmail.com",
-  "password"  :"password11"
-  
-}
-Example curl Command
-curl -X POST http://localhost:8087/auth/register \
-     -H "Content-Type: application/json" \
-     -d '{
-          "firstname" : "firstname",
-          "lastname"  : "lastname",
-          "email"     : "name@gmail.com",
-          "password"  :"password11"
-         }'
-User Authenticate
-Endpoint: /auth/authenticate
-Method: POST
-Description: Authenticating user via Email .
 
-Request Body
-JSON
-{
-  "email"     : "name@gmail.com",
-  "password"  :"password11"
-  
-}
-Example curl Command
-curl -X POST http://localhost:8087/auth/authenticate \
-     -H "Content-Type: application/json" \
-     -d '{
-        
-          "email"     : "name@gmail.com",
-          "password"  :"password11"
-         }'
-you can see email validation code through end point through your :http://localhost:1080/#/
-Email Validation
-Endpoint: /auth/activate-account
-Method: POST
-Description: Validate a new user account using the email validation code.
+```http
+  POST  http://localhost:8087/auth/register 
+```
 
-Request Body
-JSON
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `firstname` | `string` | **Required**. Your API key |
+| `lasttname` | `string` | **Required**. Your API key |
+| `email` | `string` | **Required**. Your API key |
+| `password` | `string` | **Required**. Your API key |
 
-{
 
-  "validationCode": "123456"
-}
 
-Example curl Command
-curl -X POST http://localhost:8087/auth/validate \
-     -H "Content-Type: application/json" \
-     -d '{
-           "validationCode": "123456"
-         }'
+## User Authenticate via email
 
-User Authentication
-Endpoint: /api/auth/login
-Method: POST
-Description: Log in to an existing user account.
+#### Description: Authenticating user via Email .
 
-Request Body
-JSON
 
-{
-  "username": "existinguser",
-  "password": "password123"
-}
 
-Example curl Command
-curl -X POST http://localhost:8087/auth/login \
-     -H "Content-Type: application/json" \
-     -d '{
-           "username": "existinguser",
-           "password": "password123"
-         }'
+#### you can see email validation code through end point through your : http://localhost:1080/#/
+## Email Validation
+#### Description: Validate a new user account using the email validation code.
+```http
+  POST http://localhost:8087/auth/activate-account 
+```
 
-Fetch a List of Manufacturers
-Endpoint: /api/supplier/query
-Method: POST
-Description: Retrieve a list of manufacturers based on location, nature of business, and manufacturing processes.
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `validationCode`      | `string` | **Required**. your code |
 
-Request Body
-JSON
 
-{
-  "location": "India",
-  "nature_of_business": "small_scale",
-  "manufacturing_processes": ["3d_printing"]
-}
 
-Example curl Command
-curl -X POST http://localhost:8087/api/supplier/query \
-     -H "Content-Type: application/json" \
-     -d '{
-           "location": "India",
-           "nature_of_business": "small_scale",
-           "manufacturing_processes": ["3d_printing"]
-         }'
+## User Authentication
 
-Response
+#### Description: Log in to an existing user account.
+
+```http
+  POST http://localhost:8087/auth/authenticate 
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `email`      | `string` | **Required**. your email |
+| `password`      | `string` | **Required**. your password |
+
+## Fetch a List of Manufacturers
+
+#### Description: Retrieve a list of manufacturers based on location, nature of business, and manufacturing processes.
+```http
+  POST  http://localhost:8087/auth/register 
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `location` | `string` | **Required**. Your API key |
+| `nature_of_business` | `string` | **Required**. Your API key |
+| `manufacturing_processes` | `string` | **Required**. Your API key |
+
+
+
+## Response
 JSON
 
 [
@@ -157,11 +126,12 @@ JSON
   }
 ]
 
-Security
+
+## Security
 The API is secured using Spring Security and JWT. Ensure you have the necessary configurations in place for authentication and authorization.
 
-Exception Handling
+## Exception Handling
 Global exception handling is implemented to manage errors gracefully.
 
-Documentation
+## Documentation
 API documentation is available via OpenAPI. Access it at http://localhost:8087/swagger-ui/index.html.
