@@ -34,10 +34,10 @@ To set up the backend of the Book Social Network project, follow these steps:
 
 
 ## API Endpoints
-# User Registration
-# Endpoint: /auth/register
-# Method: POST
-#  Description: Register a new user account.
+### User Registration
+### Endpoint: /auth/register
+### Method: POST
+###  Description: Register a new user account.
 
 Request Body
 JSON
