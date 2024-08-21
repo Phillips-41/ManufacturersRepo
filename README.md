@@ -45,10 +45,9 @@ git clone https://github.com/Phillips-41/ManufacturersRepo.git
 ### API Endpoints:
 
 
-### Endpoint: /auth/register
-### Method: POST
-###  Description: Register a new user account.
-## API Reference
+
+####  Description: Register a new user account.
+
 
 
 
