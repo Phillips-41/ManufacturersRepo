@@ -33,11 +33,11 @@ To set up the backend of the Book Social Network project, follow these steps:
 ### Access the API documentation using Swagger UI:
 
 
-API Endpoints
-User Registration
-Endpoint: /auth/register
-Method: POST
-Description: Register a new user account.
+## API Endpoints
+## User Registration
+## Endpoint: /auth/register
+## Method: POST
+## Description: Register a new user account.
 
 Request Body
 JSON
