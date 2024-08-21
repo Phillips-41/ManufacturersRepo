@@ -1,0 +1,12 @@
+
+spring:
+  application:
+    name: ManufactureApi
+  profiles:
+    active: dev
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
